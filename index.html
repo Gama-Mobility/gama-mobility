@@ -12,7 +12,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-
+```
 :root {
   --black: #0a0a0a;
   --off-white: #f7f6f3;
@@ -35,6 +35,985 @@ body {
   background: var(--white);
   color: var(--black);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-100);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-mark {
+  height: 36px;
+  display: flex; align-items: center;
+}
+.nav-logo-mark img {
+  height: 36px;
+  width: auto;
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--black);
+  letter-spacing: -0.3px;
+}
+.nav-wordmark em { font-style: normal; color: var(--gray-500); font-weight: 400; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-700);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--black); }
+
+.nav-cta {
+  background: var(--black) !important;
+  color: var(--white) !important;
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  transition: background 0.2s, transform 0.15s !important;
+}
+.nav-cta:hover { background: var(--gray-700) !important; transform: translateY(-1px); }
+
+.nav-burger {
+  display: none;
+  flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-burger span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--black);
+  transition: all 0.3s;
+}
+
+/* ─── HERO ────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+}
+
+.hero-left {
+  padding: 80px 64px 80px 80px;
+  animation: fadeUp 0.9s ease both;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-light);
+  padding: 6px 14px; border-radius: 100px;
+  margin-bottom: 32px;
+}
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 4.5vw, 68px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+.hero-h1 .line-accent { color: var(--accent); }
+
+.hero-sub {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--gray-500);
+  max-width: 420px;
+  margin-bottom: 44px;
+}
+
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: none; cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-primary:hover {
+  background: var(--gray-700);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent;
+  color: var(--black);
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 1.5px solid var(--gray-300);
+  cursor: pointer; text-decoration: none;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.btn-secondary:hover {
+  border-color: var(--black);
+  transform: translateY(-2px);
+}
+
+.hero-right {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 1.2s ease both 0.2s;
+}
+.hero-right img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.92) saturate(0.9);
+}
+.hero-right-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(255,255,255,0.15) 0%, transparent 40%);
+}
+.hero-right-placeholder {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 40%, #1a1a1a 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 16px;
+}
+.hero-placeholder-icon {
+  width: 80px; height: 80px;
+  border: 1.5px solid rgba(200,169,110,0.4);
+  border-radius: 50%;
+  display: grid; place-items: center;
+}
+.hero-placeholder-icon svg { opacity: 0.6; }
+.hero-placeholder-text {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(200,169,110,0.5);
+}
+
+.hero-stats {
+  position: absolute; bottom: 48px; left: 40px;
+  display: flex; gap: 32px;
+  animation: fadeUp 0.9s ease both 0.4s;
+}
+.stat {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.stat-n {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 800;
+  color: var(--black);
+  letter-spacing: -0.04em;
+}
+.stat-l {
+  font-size: 11px; font-weight: 400;
+  color: var(--gray-500);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ─── SERVICES SECTION ─────────────────────── */
+section { padding: 120px 80px; }
+
+.section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 20px;
+}
+.section-tag::before {
+  content: ''; display: block;
+  width: 20px; height: 1.5px;
+  background: var(--gray-300);
+}
+
+.section-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--gray-500);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 64px;
+}
+
+/* ─── VTC ──────────────────────────────────── */
+#vtc { background: var(--white); }
+
+.vtc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.vtc-image {
+  aspect-ratio: 4/3;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--gray-100);
+  position: relative;
+}
+.vtc-image img { width: 100%; height: 100%; object-fit: cover; }
+.vtc-image-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px;
+  background: linear-gradient(135deg, var(--gray-100) 0%, var(--off-white) 100%);
+  color: var(--gray-300);
+}
+
+.vtc-features {
+  display: flex; flex-direction: column; gap: 28px;
+  margin-top: 40px;
+}
+.feature-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 20px 24px;
+  border: 1px solid var(--gray-100);
+  border-radius: 14px;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+  cursor: default;
+}
+.feature-item:hover {
+  border-color: var(--accent-light);
+  box-shadow: 0 4px 20px rgba(200,169,110,0.08);
+  transform: translateX(4px);
+}
+.feature-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: var(--off-white);
+  border-radius: 10px;
+  display: grid; place-items: center;
+  color: var(--accent);
+}
+.feature-text h3 {
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 700;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+.feature-text p {
+  font-size: 13px; font-weight: 300;
+  color: var(--gray-500); line-height: 1.5;
+}
+
+/* ─── IMPORT/EXPORT ─────────────────────────── */
+#importacion { background: var(--off-white); }
+
+.imp-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; margin-bottom: 64px;
+  flex-wrap: wrap; gap: 32px;
+}
+
+.imp-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.imp-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px 28px;
+  border: 1px solid var(--gray-100);
+  transition: box-shadow 0.3s, transform 0.25s;
+  position: relative; overflow: hidden;
+}
+.imp-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--accent), var(--accent-light));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.imp-card:hover {
+  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+.imp-card:hover::before { opacity: 1; }
+
+.imp-card-num {
+  font-family: var(--font-display);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gray-300);
+  margin-bottom: 20px;
+}
+.imp-card-icon {
+  width: 52px; height: 52px;
+  background: var(--off-white);
+  border-radius: 14px;
+  display: grid; place-items: center;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+.imp-card h3 {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 700;
+  color: var(--black); margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+.imp-card p {
+  font-size: 13px; font-weight: 300;
+  color: var(--gray-500); line-height: 1.65;
+}
+
+/* ─── NOSOTROS ──────────────────────────────── */
+#nosotros { background: var(--white); }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 8px;
+}
+.team-card {
+  border: 1px solid var(--gray-100);
+  border-radius: 20px;
+  padding: 36px 28px;
+  text-align: center;
+  transition: box-shadow 0.3s, transform 0.25s;
+}
+.team-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+}
+.team-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gray-100), var(--off-white));
+  margin: 0 auto 20px;
+  display: grid; place-items: center;
+  overflow: hidden;
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 1px var(--gray-100);
+}
+.team-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.team-avatar-initials {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 800;
+  color: var(--gray-500);
+}
+.team-name {
+  font-family: var(--font-display);
+  font-size: 17px; font-weight: 700;
+  color: var(--black); margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+.team-role {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.team-bio {
+  font-size: 13px; font-weight: 300;
+  color: var(--gray-500); line-height: 1.6;
+}
+.team-location {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 400;
+  color: var(--gray-300);
+  margin-top: 16px;
+}
+
+/* ─── CONTACTO ──────────────────────────────── */
+#contacto {
+  background: var(--black);
+  color: var(--white);
+}
+#contacto .section-tag { color: var(--accent); }
+#contacto .section-tag::before { background: rgba(200,169,110,0.3); }
+#contacto .section-h2 { color: var(--white); }
+#contacto .section-sub { color: rgba(255,255,255,0.45); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-info {
+  display: flex; flex-direction: column; gap: 32px;
+}
+.contact-item {
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.contact-item-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  display: grid; place-items: center;
+  color: var(--accent);
+}
+.contact-item-text h4 {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 4px;
+}
+.contact-item-text p, .contact-item-text a {
+  font-size: 15px; font-weight: 400;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-item-text a:hover { color: var(--accent); }
+
+/* Form */
+.contact-form {
+  display: flex; flex-direction: column; gap: 16px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 300;
+  color: var(--white);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  background: rgba(200,169,110,0.04);
+}
+.form-group select option { background: #1a1a1a; color: var(--white); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+.form-submit {
+  background: var(--accent);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 600;
+  padding: 15px 32px;
+  border-radius: 100px;
+  border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+  align-self: flex-start;
+  margin-top: 8px;
+}
+.form-submit:hover {
+  background: #d4b67a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200,169,110,0.25);
+}
+
+/* ─── FOOTER ────────────────────────────────── */
+footer {
+  background: #050505;
+  padding: 40px 80px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.footer-copy {
+  font-size: 12px; font-weight: 300;
+  color: rgba(255,255,255,0.2);
+}
+.footer-copy strong { color: rgba(255,255,255,0.4); font-weight: 500; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a {
+  font-size: 12px; font-weight: 300;
+  color: rgba(255,255,255,0.2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: rgba(255,255,255,0.5); }
+
+/* ─── ANIMATIONS ────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── MOBILE NAV ────────────────────────────── */
+.mobile-menu {
+  display: none;
+  position: fixed; top: var(--nav-h); left: 0; right: 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-100);
+  padding: 24px 32px;
+  flex-direction: column; gap: 20px;
+  z-index: 99;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 16px; font-weight: 500;
+  color: var(--black); text-decoration: none;
+}
+
+/* ─── RESPONSIVE ────────────────────────────── */
+@media (max-width: 1024px) {
+  section { padding: 80px 40px; }
+  nav { padding: 0 32px; }
+  footer { padding: 32px 40px; }
+  #hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 60px 40px; }
+  .hero-right { height: 55vw; min-height: 300px; }
+  .vtc-grid { grid-template-columns: 1fr; }
+  .imp-cards { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .hero-stats { position: static; margin-top: 40px; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 60px 24px; }
+  nav { padding: 0 20px; }
+  footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  #hero { padding-top: var(--nav-h); }
+  .hero-left { padding: 48px 24px; }
+  .imp-cards { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">
+        <img src="logo.png" alt="Gama Mobility" />
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#vtc">Servicio VTC</a></li>
+      <li><a href="#importacion">Importación</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    </ul>
+    <button class="nav-burger" id="burger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#vtc" onclick="closeMobile()">Servicio VTC</a>
+    <a href="#importacion" onclick="closeMobile()">Importación / Exportación</a>
+    <a href="#nosotros" onclick="closeMobile()">Sobre nosotros</a>
+    <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  </div>
+
+  <!-- HERO -->
+
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-tag">Valencia, España · Licencia VTC</div>
+      <h1 class="hero-h1">
+        Movilidad premium.<br/>
+        <span class="line-accent">Sin compromisos.</span>
+      </h1>
+      <p class="hero-sub">
+        Servicio VTC de alta gama en Valencia y operaciones de importación y exportación de vehículos para clientes exigentes.
+      </p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">
+          Solicitar servicio
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#vtc" class="btn-secondary">Descubrir más</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-n">VTC</span>
+          <span class="stat-l">Licencia oficial</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">EU</span>
+          <span class="stat-l">Import / Export</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">24/7</span>
+          <span class="stat-l">Disponibilidad</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-placeholder">
+        <div class="hero-placeholder-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5">
+            <path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3m-7 11h10a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <span class="hero-placeholder-text">Imagen principal</span>
+      </div>
+      <div class="hero-right-overlay"></div>
+    </div>
+  </section>
+
+  <!-- VTC -->
+
+  <section id="vtc">
+    <div class="vtc-grid">
+      <div class="reveal">
+        <div class="section-tag">Servicio VTC</div>
+        <h2 class="section-h2">Tu conductor<br/>de confianza<br/>en Valencia</h2>
+        <p class="section-sub">
+          Ofrecemos transporte privado con conductor bajo licencia VTC. Puntualidad, discreción y vehículos de alta gama para particulares y empresas.
+        </p>
+        <div class="vtc-features">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h3>Servicio 24/7</h3>
+              <p>Reservas en cualquier momento, traslados al aeropuerto, eventos y viajes de negocio.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h3>Licencia oficial VTC</h3>
+              <p>Operación regulada, seguros completos y conductores profesionales certificados.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="feature-text">
+              <h3>Toda la Comunidad Valenciana</h3>
+              <p>Valencia ciudad y traslados a Alicante, Castellón, Madrid y más destinos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vtc-image reveal">
+        <div class="vtc-image-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+          <span style="font-size:13px;color:var(--gray-300);margin-top:8px">Foto del vehículo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPORTACIÓN -->
+
+  <section id="importacion">
+    <div class="imp-header reveal">
+      <div>
+        <div class="section-tag">Importación & Exportación</div>
+        <h2 class="section-h2">Tu vehículo<br/>ideal, sin fronteras</h2>
+      </div>
+      <p class="section-sub" style="margin-bottom:0;">Gestionamos todo el proceso de importación y exportación de vehículos dentro de la Unión Europea con total transparencia.</p>
+    </div>
+    <div class="imp-cards">
+      <div class="imp-card reveal">
+        <div class="imp-card-num">01</div>
+        <div class="imp-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3>Búsqueda en Europa</h3>
+        <p>Localizamos el vehículo que buscas en los principales mercados europeos: Alemania, Francia, Italia y más.</p>
+      </div>
+      <div class="imp-card reveal">
+        <div class="imp-card-num">02</div>
+        <div class="imp-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+          </svg>
+        </div>
+        <h3>Gestión aduanera</h3>
+        <p>Tramitamos toda la documentación, homologación y matrícula en España. Sin sorpresas ni papeleo.</p>
+      </div>
+      <div class="imp-card reveal">
+        <div class="imp-card-num">03</div>
+        <div class="imp-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <h3>Logística & entrega</h3>
+        <p>Transporte del vehículo hasta Valencia con seguimiento en tiempo real. Entrega en tu puerta.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+
+  <section id="nosotros">
+    <div class="reveal" style="max-width:600px;margin-bottom:64px;">
+      <div class="section-tag">El equipo</div>
+      <h2 class="section-h2">Tres socios,<br/>un proyecto</h2>
+      <p class="section-sub" style="margin-bottom:0;">
+        Gama Mobility nace de la unión de tres profesionales con visión compartida: construir una empresa de movilidad moderna, ágil y de confianza.
+      </p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar"><div class="team-avatar-initials">MT</div></div>
+        <div class="team-name">Michel Tarek</div>
+        <div class="team-role">Administrador · Socio fundador</div>
+        <p class="team-bio">Responsable de la administración y representación legal de la sociedad. Aporta visión estratégica y experiencia internacional.</p>
+        <div class="team-location">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+          Francia
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar"><div class="team-avatar-initials">AC</div></div>
+        <div class="team-name">Antonio Carreyo</div>
+        <div class="team-role">Operaciones · Socio fundador</div>
+        <p class="team-bio">Conocido como "Chicho", gestiona las operaciones diarias del servicio VTC y la relación con clientes en Valencia.</p>
+        <div class="team-location">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+          Valencia, España
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar"><div class="team-avatar-initials">AL</div></div>
+        <div class="team-name">Alejandro</div>
+        <div class="team-role">Desarrollo · Socio fundador</div>
+        <p class="team-bio">Impulsa el desarrollo de negocio, la estrategia digital y las operaciones de importación/exportación de vehículos.</p>
+        <div class="team-location">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+          Polonia
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+
+  <section id="contacto">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-tag">Contacto</div>
+        <h2 class="section-h2">Hablemos</h2>
+        <p class="section-sub">¿Necesitas un VTC o quieres importar un vehículo? Escríbenos y te respondemos en menos de 24 horas.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <h4>Ubicación</h4>
+              <p>Valencia, España</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <h4>Email</h4>
+              <a href="mailto:info@gamam obility.es">info@gamam obility.es</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 14.1a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 3.5h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 11a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 17.92z"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <h4>Teléfono / WhatsApp</h4>
+              <a href="tel:+34600000000">+34 600 000 000</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="contact-form" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" placeholder="Tu nombre" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="tu@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Servicio</label>
+            <select>
+              <option value="" disabled selected>¿En qué podemos ayudarte?</option>
+              <option>Servicio VTC</option>
+              <option>Importación de vehículo</option>
+              <option>Exportación de vehículo</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensaje</label>
+            <textarea placeholder="Cuéntanos más sobre tu necesidad..."></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">
+            Enviar mensaje
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+          <div id="form-success" style="display:none;color:#c8a96e;font-size:14px;margin-top:8px;">
+            ✓ Mensaje enviado. Te contactamos pronto.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <p class="footer-copy">© 2025 <strong>Gama Mobility, S.L.</strong> · Valencia, España · CIF en tramitación</p>
+    <div class="footer-links">
+      <a href="#">Política de privacidad</a>
+      <a href="#">Aviso legal</a>
+      <a href="#">Cookies</a>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll shadow
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    burger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobile() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form mock submit
+    function submitForm() {
+      document.getElementById('form-success').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
