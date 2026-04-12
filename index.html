@@ -71,13 +71,15 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
 }
 .nav-logo-mark {
   height: 40px;
-  display: flex; align-items: center;
+  display: flex;
+  align-items: center;
 }
 .nav-logo-mark img {
-  height: 38px;
-  width: auto;
-  filter: brightness(0) invert(1); /* Esto lo vuelve blanco */
-  opacity: 1; /* Súbelo a 1 para que se vea nítido */
+  height: 35px;      /* Altura correcta */
+  width: auto;       /* Que el ancho se ajuste solo */
+  filter: none !important; /* Quitamos filtros para que se vea el color original del logo */
+  opacity: 1;
+
 }
 .nav-wordmark {
   font-family: var(--font-display);
@@ -676,10 +678,10 @@ footer {
 
   <nav id="navbar">
     <a href="#" class="nav-logo">
-      <div class="nav-logo-mark">
-        <img src="logo.png" alt="Gama Mobility" />
-      </div>
-      <span class="nav-wordmark">Gama Mobility</span> </a>
+  <div class="nav-logo-mark">
+    <img src="logo.png" alt="Gama Mobility" />
+  </div>
+</a>
     
     <ul class="nav-links">
       <li><a href="#vtc">Servicio VTC</a></li>
