@@ -57,9 +57,13 @@ nav {
   height: var(--nav-h);
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 48px 0 0; /* Bajamos de 48px a 20px para pegarlo más al borde */
+  
   background: rgba(10,10,10,0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
+  /* ... tus otras propiedades ... */
+  border-bottom: none;      /* ¡Elimina el borde inferior de la barra de navegación! */
+
 }
 nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
 
@@ -75,7 +79,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
   align-items: center;
 }
 .nav-logo-mark img {
-  height: 90px;             /* Esto le devuelve el tamaño grande */
+  height: 95px;             /* Esto le devuelve el tamaño grande */
   width: auto;
   filter: none !important;  /* Para que se vea el color real */
  /* ESTAS TRES LÍNEAS SON LA CLAVE PARA MOVERLO */
