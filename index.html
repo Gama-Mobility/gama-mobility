@@ -75,12 +75,14 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
   align-items: center;
 }
 .nav-logo-mark img {
-  height: 85px;             /* Esto le devuelve el tamaño grande */
+  height: 90px;             /* Esto le devuelve el tamaño grande */
   width: auto;
   filter: none !important;  /* Para que se vea el color real */
-  transform: scale(1.6);    /* Un poco de zoom para eliminar el aire de la imagen */
-  transform-origin: left;   /* Anclado a la izquierda */
-  margin-left: -55px;       /* ¡LA CLAVE! Esto lo empuja fuera de la zona negra */
+ /* ESTAS TRES LÍNEAS SON LA CLAVE PARA MOVERLO */
+  transform: scale(1.3);    /* Un poco de zoom para que rellene más */
+  transform-origin: left;   /* Lo ancla a la izquierda */
+  margin-left: -40px;       /* ¡El "empujón"! Muévelo hacia la izquierda */
+  
   opacity: 1;
   display: block;
 }
