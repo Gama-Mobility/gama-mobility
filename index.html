@@ -76,14 +76,14 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
 .nav-logo-mark img {
   height: 38px;
   width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
+  filter: brightness(0) invert(1); /* Esto lo vuelve blanco */
+  opacity: 1; /* Súbelo a 1 para que se vea nítido */
 }
 .nav-wordmark {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 17px;
-  color: var(--black);
+  color: var(--white); /* CAMBIA ESTO: de --black a --white */
   letter-spacing: -0.3px;
 }
 .nav-wordmark em { font-style: normal; color: var(--gray-500); font-weight: 400; }
@@ -679,7 +679,8 @@ footer {
       <div class="nav-logo-mark">
         <img src="logo.png" alt="Gama Mobility" />
       </div>
-    </a>
+      <span class="nav-wordmark">Gama Mobility</span> </a>
+    
     <ul class="nav-links">
       <li><a href="#vtc">Servicio VTC</a></li>
       <li><a href="#importacion">Importación</a></li>
