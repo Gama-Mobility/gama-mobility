@@ -75,15 +75,12 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
   align-items: center;
 }
 .nav-logo-mark img {
-  height: 60px; /* Mantén el tamaño que te gustó */
+  height: 85px;             /* Esto le devuelve el tamaño grande */
   width: auto;
-  filter: none !important;
-  
-  /* ESTO ES LO QUE LO MUEVE A LA IZQUIERDA */
-  transform: scale(1.1); /* Un pequeño zoom para que rellene más */
-  transform-origin: left center; 
-  margin-left: -40px; /* ESTE VALOR muévelo según necesites (-50px, -60px...) */
-  
+  filter: none !important;  /* Para que se vea el color real */
+  transform: scale(1.6);    /* Un poco de zoom para eliminar el aire de la imagen */
+  transform-origin: left;   /* Anclado a la izquierda */
+  margin-left: -55px;       /* ¡LA CLAVE! Esto lo empuja fuera de la zona negra */
   opacity: 1;
   display: block;
 }
@@ -92,8 +89,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
   height: var(--nav-h);
   display: flex;
   align-items: center;
-  overflow: hidden;         /* Corta cualquier exceso que se salga de la barra */
-  width: 220px;             /* Le da espacio a lo ancho para que no se corte el texto */
+  overflow: hidden; /* Esto es para que el logo no "pise" el texto de abajo */
 }
 .nav-wordmark em { font-style: normal; color: var(--gray-500); font-weight: 400; }
 
