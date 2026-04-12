@@ -81,7 +81,7 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
  /* ESTAS TRES LÍNEAS SON LA CLAVE PARA MOVERLO */
   transform: scale(1.3);    /* Un poco de zoom para que rellene más */
   transform-origin: left;   /* Lo ancla a la izquierda */
-  margin-left: -40px;       /* ¡El "empujón"! Muévelo hacia la izquierda */
+  margin-left: -30px;       /* ¡El "empujón"! Muévelo hacia la izquierda */
   
   opacity: 1;
   display: block;
@@ -91,7 +91,8 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
   height: var(--nav-h);
   display: flex;
   align-items: center;
-  overflow: hidden; /* Esto es para que el logo no "pise" el texto de abajo */
+  overflow: hidden;         /* Corta cualquier exceso que se salga de la barra */
+  width: 200px;             /* Le da espacio a lo ancho para que no se corte el texto */
 }
 .nav-wordmark em { font-style: normal; color: var(--gray-500); font-weight: 400; }
 
