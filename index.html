@@ -56,7 +56,7 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: var(--nav-h);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 20px; /* Bajamos de 48px a 20px para pegarlo más al borde */
+  padding: 0 48px 0 0; /* Bajamos de 48px a 20px para pegarlo más al borde */
   background: rgba(10,10,10,0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -75,12 +75,15 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
   align-items: center;
 }
 .nav-logo-mark img {
-  height: 90px;             /* Aumentamos mucho la altura */
+  height: 60px; /* Mantén el tamaño que te gustó */
   width: auto;
-  filter: none !important;  /* Para ver el logo original */
-  transform: scale(1.8);    /* Zoom agresivo para eliminar los bordes negros */
-  transform-origin: left;   /* Lo ancla a la izquierda */
-  margin-left: -15px;       /* Lo empuja hacia fuera para pegarlo al borde total */
+  filter: none !important;
+  
+  /* ESTO ES LO QUE LO MUEVE A LA IZQUIERDA */
+  transform: scale(1.1); /* Un pequeño zoom para que rellene más */
+  transform-origin: left center; 
+  margin-left: -40px; /* ESTE VALOR muévelo según necesites (-50px, -60px...) */
+  
   opacity: 1;
   display: block;
 }
