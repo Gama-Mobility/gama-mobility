@@ -70,16 +70,16 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
   text-decoration: none;
 }
 .nav-logo-mark {
-  height: 40px;
+  height: 72px;       /* Misma altura que la barra de navegación */
   display: flex;
   align-items: center;
 }
 .nav-logo-mark img {
-  height: 35px;      /* Altura correcta */
-  width: auto;       /* Que el ancho se ajuste solo */
-  filter: none !important; /* Quitamos filtros para que se vea el color original del logo */
+  height: 60px;       /* Subimos de 38px a 60px para que se vea grande */
+  width: auto;        /* Mantiene la proporción */
+  filter: none !important; /* IMPORTANTE: Quitamos el filtro para ver el logo real */
   opacity: 1;
-
+  display: block;
 }
 .nav-wordmark {
   font-family: var(--font-display);
