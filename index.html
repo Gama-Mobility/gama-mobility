@@ -1,14 +1,4 @@
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gama Mobility — VTC & Importación de Vehículos en Valencia</title>
-  <meta name="description" content="Servicio VTC premium en Valencia e importación/exportación de vehículos. Gama Mobility, tu socio de confianza en movilidad." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: bord…
+<!DOCTYPE html>
 
 <html lang="es">
 <head>
@@ -53,47 +43,35 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: var(--nav-h);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 48px 0 0; /* Bajamos de 48px a 20px para pegarlo más al borde */
-  
+  padding: 0 48px;
   background: rgba(10,10,10,0.95);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  /* ... tus otras propiedades ... */
-  border-bottom: none;      /* ¡Elimina el borde inferior de la barra de navegación! */
-
+  transition: box-shadow 0.3s;
 }
 nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
 
 .nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 0; /* Quitamos el hueco */
+  display: flex; align-items: center; gap: 10px;
   text-decoration: none;
 }
 .nav-logo-mark {
-  height: 72px;       /* Misma altura que la barra de navegación */
-  display: flex;
-  align-items: center;
+  height: 40px;
+  display: flex; align-items: center;
 }
 .nav-logo-mark img {
-  height: 95px;             /* Esto le devuelve el tamaño grande */
+  height: 38px;
   width: auto;
-  filter: none !important;  /* Para que se vea el color real */
- /* ESTAS TRES LÍNEAS SON LA CLAVE PARA MOVERLO */
-  transform: scale(1.3);    /* Un poco de zoom para que rellene más */
-  transform-origin: left;   /* Lo ancla a la izquierda */
-  margin-left: -30px;       /* ¡El "empujón"! Muévelo hacia la izquierda */
-  
-  opacity: 1;
-  display: block;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
-
-.nav-logo-mark {
-  height: var(--nav-h);
-  display: flex;
-  align-items: center;
-  overflow: hidden;         /* Corta cualquier exceso que se salga de la barra */
-  width: 200px;             /* Le da espacio a lo ancho para que no se corte el texto */
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--black);
+  letter-spacing: -0.3px;
 }
 .nav-wordmark em { font-style: normal; color: var(--gray-500); font-weight: 400; }
 
@@ -491,44 +469,63 @@ section { padding: 120px 80px; }
 
 /* ─── CONTACTO ──────────────────────────────── */
 #contacto {
-  background: var(--black);
+  background: #0a0a0a !important;
   color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+#contacto::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(200,169,110,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
 }
 #contacto .section-tag { color: var(--accent); }
 #contacto .section-tag::before { background: rgba(200,169,110,0.3); }
-#contacto .section-h2 { color: var(--white); }
-#contacto .section-sub { color: rgba(255,255,255,0.45); }
+#contacto .section-h2 { color: var(--white) !important; }
+#contacto .section-sub { color: rgba(255,255,255,0.45) !important; }
 
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 80px;
   align-items: start;
+  position: relative; z-index: 1;
 }
 
 .contact-info {
-  display: flex; flex-direction: column; gap: 32px;
+  display: flex; flex-direction: column; gap: 24px;
 }
 .contact-item {
   display: flex; gap: 16px; align-items: flex-start;
+  padding: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.contact-item:hover {
+  border-color: rgba(200,169,110,0.2);
+  background: rgba(200,169,110,0.04);
 }
 .contact-item-icon {
-  width: 40px; height: 40px; flex-shrink: 0;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 10px;
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: rgba(200,169,110,0.1);
+  border: 1px solid rgba(200,169,110,0.2);
+  border-radius: 12px;
   display: grid; place-items: center;
   color: var(--accent);
 }
 .contact-item-text h4 {
-  font-size: 12px; font-weight: 500;
+  font-size: 11px; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
   color: rgba(255,255,255,0.3);
   margin-bottom: 4px;
 }
 .contact-item-text p, .contact-item-text a {
   font-size: 15px; font-weight: 400;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.85);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -537,19 +534,23 @@ section { padding: 120px 80px; }
 /* Form */
 .contact-form {
   display: flex; flex-direction: column; gap: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 36px;
 }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .form-group { display: flex; flex-direction: column; gap: 8px; }
 .form-group label {
-  font-size: 11px; font-weight: 500;
+  font-size: 11px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
   color: rgba(255,255,255,0.35);
 }
 .form-group input,
 .form-group select,
 .form-group textarea {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 10px;
   padding: 14px 16px;
   font-family: var(--font-body);
@@ -560,13 +561,12 @@ section { padding: 120px 80px; }
   width: 100%;
 }
 .form-group input::placeholder,
-.form-group textarea::placeholder { color: rgba(200,169,110,0.3);
-  color: #fff;}
+.form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--accent);
-  background: rgba(200,169,110,0.04);
+  background: rgba(200,169,110,0.05);
 }
 .form-group select option { background: #1a1a1a; color: var(--white); }
 .form-group textarea { resize: vertical; min-height: 120px; }
@@ -575,7 +575,7 @@ section { padding: 120px 80px; }
   background: var(--accent);
   color: var(--black);
   font-family: var(--font-body);
-  font-size: 14px; font-weight: 600;
+  font-size: 14px; font-weight: 700;
   padding: 15px 32px;
   border-radius: 100px;
   border: none; cursor: pointer;
@@ -583,11 +583,15 @@ section { padding: 120px 80px; }
   display: inline-flex; align-items: center; gap: 8px;
   align-self: flex-start;
   margin-top: 8px;
+  letter-spacing: 0.02em;
 }
 .form-submit:hover {
   background: #d4b67a;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(200,169,110,0.25);
+  box-shadow: 0 8px 24px rgba(200,169,110,0.3);
+}
+.form-submit:disabled {
+  opacity: 0.6; cursor: not-allowed; transform: none;
 }
 
 /* ─── FOOTER ────────────────────────────────── */
@@ -686,11 +690,10 @@ footer {
 
   <nav id="navbar">
     <a href="#" class="nav-logo">
-  <div class="nav-logo-mark">
-    <img src="logo.png" alt="Gama Mobility" />
-  </div>
-</a>
-    
+      <div class="nav-logo-mark">
+        <img src="logo.png" alt="Gama Mobility" />
+      </div>
+    </a>
     <ul class="nav-links">
       <li><a href="#vtc">Servicio VTC</a></li>
       <li><a href="#importacion">Importación</a></li>
@@ -882,7 +885,7 @@ footer {
         <div class="team-avatar"><div class="team-avatar-initials">MT</div></div>
         <div class="team-name">Michel Tarek</div>
         <div class="team-role">Administrador · Socio fundador</div>
-        <p class="team-bio"> Responsable de la administración y representación legal de la sociedad. Aporta visión estratégica y experiencia internacional.</p>
+        <p class="team-bio">Responsable de la administración y representación legal de la sociedad. Aporta visión estratégica y experiencia internacional.</p>
         <div class="team-location">
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
           Francia
@@ -890,7 +893,7 @@ footer {
       </div>
       <div class="team-card reveal">
         <div class="team-avatar"><div class="team-avatar-initials">AC</div></div>
-        <div class="team-name">antonio carreyo</div>
+        <div class="team-name">Antonio Carreyo</div>
         <div class="team-role">Operaciones · Socio fundador</div>
         <p class="team-bio">Gestiona las operaciones diarias del servicio VTC y la relación con clientes en Valencia.</p>
         <div class="team-location">
@@ -902,7 +905,7 @@ footer {
         <div class="team-avatar"><div class="team-avatar-initials">AL</div></div>
         <div class="team-name">Alejandro</div>
         <div class="team-role">Desarrollo · Socio fundador</div>
-        <p class="team-bio"> "CEO" Impulsa el desarrollo de negocio, la estrategia digital y las operaciones de importación/exportación de vehículos.</p>
+        <p class="team-bio">"CEO" Impulsa el desarrollo de negocio, la estrategia digital y las operaciones de importación/exportación de vehículos.</p>
         <div class="team-location">
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
           Polonia
@@ -928,7 +931,7 @@ footer {
             </div>
             <div class="contact-item-text">
               <h4>Ubicación</h4>
-              <p>España</p>
+              <p>Valencia, España</p>
             </div>
           </div>
           <div class="contact-item">
@@ -939,7 +942,7 @@ footer {
             </div>
             <div class="contact-item-text">
               <h4>Email</h4>
-             <a href="mailto:contact@gamamobility.eu">contact@gamamobility.eu</a>
+              <a href="mailto:contact@gamamobility.eu">contact@gamamobility.eu</a>
             </div>
           </div>
           <div class="contact-item">
@@ -960,7 +963,7 @@ footer {
           <div class="form-row">
             <div class="form-group">
               <label>Nombre</label>
-             <input type="text" id="name" placeholder="Tu nombre" />
+              <input type="text" id="name" placeholder="Tu nombre" />
             </div>
             <div class="form-group">
               <label>Email</label>
@@ -979,15 +982,22 @@ footer {
           </div>
           <div class="form-group">
             <label>Mensaje</label>
-           <textarea id="message" placeholder="Cuéntanos más sobre tu necesidad..."></textarea>
+            <textarea id="message" placeholder="Cuéntanos más sobre tu necesidad..."></textarea>
           </div>
-          <button class="form-submit" onclick="submitForm()">
+          <button class="form-submit" id="submit-btn" onclick="submitForm()">
             Enviar mensaje
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
           </button>
-          <div id="form-success" style="display:none;color:#c8a96e;font-size:14px;margin-top:8px;">
-            ✓ Mensaje enviado. Te contactamos pronto.
+          <div id="form-success" style="display:none;color:#c8a96e;font-size:14px;margin-top:8px;padding:16px;background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.2);border-radius:10px;">
+            ✓ Mensaje enviado. Te contactamos en menos de 24 horas.
           </div>
+          <div id="form-error" style="display:none;color:#ff6b6b;font-size:14px;margin-top:8px;padding:16px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);border-radius:10px;">
+            ✗ Error al enviar. Por favor inténtalo de nuevo.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
         </div>
       </div>
     </div>
@@ -1033,44 +1043,44 @@ footer {
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
 
-    // Form mock submit
+    // Form submit with n8n webhook
     async function submitForm() {
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const service = document.getElementById('service').value;
-  const message = document.getElementById('message').value;
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value.trim();
+      const btn = document.getElementById('submit-btn');
 
-  // Validación básica
-  if (!name || !email || !message) {
-    alert("Por favor completa todos los campos obligatorios");
-    return;
-  }
+      if (!name || !email || !message) {
+        alert("Por favor completa nombre, email y mensaje.");
+        return;
+      }
 
-  try {
-    const response = await fetch("https://ale-gonzalezcub1409.app.n8n.cloud/webhook-test/86584613-7e42-48cb-8036-a1032e9cb368", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        service,
-        message
-      })
-    });
+      btn.disabled = true;
+      btn.innerHTML = 'Enviando... <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg>';
 
-    if (response.ok) {
-      document.getElementById('form-success').style.display = 'block';
-    } else {
-      alert("Error al enviar. Inténtalo de nuevo.");
+      try {
+        const response = await fetch("https://ale-gonzalezcub1409.app.n8n.cloud/webhook/formulario.gamamobility.test", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nombre: name, email, servicio: service, mensaje: message })
+        });
+
+        document.getElementById('form-success').style.display = 'block';
+        document.getElementById('form-error').style.display = 'none';
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+
+      } catch (error) {
+        document.getElementById('form-error').style.display = 'block';
+        document.getElementById('form-success').style.display = 'none';
+        console.error(error);
+      }
+
+      btn.disabled = false;
+      btn.innerHTML = 'Enviar mensaje <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
     }
-
-  } catch (error) {
-    alert("Error de conexión.");
-    console.error(error);
-  }
-}
   </script>
 
 </body>
