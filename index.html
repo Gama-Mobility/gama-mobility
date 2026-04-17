@@ -1060,7 +1060,7 @@ footer {
       btn.innerHTML = 'Enviando... <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg>';
 
       try {
-        const response = await fetch("https://ale-gonzalezcub1409.app.n8n.cloud/webhook/formulario.gamamobility.test", {
+        const response = await fetch("https://ale-gonzalezcub1409.app.n8n.cloud/webhook/formulario.gamamobility.eu", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ nombre: name, email, servicio: service, mensaje: message })
