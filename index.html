@@ -48,7 +48,7 @@ body {
 /* ── NOISE TEXTURE OVERLAY ── */
 body::before {
   content: '';
-  position: fixed; inset: 0; z-index: 0;
+  position: fixed; inset: 0; z-index: -1;
   opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   pointer-events: none;
@@ -79,8 +79,8 @@ nav.scrolled { background: rgba(8,8,8,0.97); }
 }
 .nav-logo img {
   height: 44px; width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.92;
+  mix-blend-mode: screen;
+  opacity: 0.95;
 }
 
 .nav-links {
