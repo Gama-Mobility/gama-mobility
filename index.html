@@ -1614,7 +1614,7 @@ footer {
     });
 
     // Calculadora
-    function fmt(n) { return n.toLocaleString('es-ES') + '€'; }
+    function fmt(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '\u20ac'; }
     function calcUpdate() {
       const eu = parseInt(document.getElementById('price-eu').value);
       const es = parseInt(document.getElementById('price-es').value);
