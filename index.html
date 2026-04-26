@@ -1,17 +1,4 @@
-[22:10, 4/25/2026] Alejandro Gonzalez: <!DOCTYPE html>
-
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gama Mobility — Importación de Vehículos Premium desde Europa</title>
-  <meta name="description" content="Importamos vehículos premium desde Europa con precio garantizado, sin sorpresas. Newsletter gratuita + alertas premium + gestión completa." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after …
-[22:28, 4/25/2026] Alejandro Gonzalez: <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="es">
 <head>
@@ -1677,7 +1664,7 @@ footer {
       btn.textContent = 'Enviando...';
       btn.disabled = true;
       try {
-        await fetch("https://ale-gonzalezcub1409.app.n8n.cloud/webhook/formulario.gamamobility.eu", {
+        await fetch("https://n8n.gamamobility.eu/webhook/formulario.gamamobility.eu", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -1702,7 +1689,7 @@ footer {
       if (!name || !email || !message) { alert('Por favor completa nombre, email y mensaje.'); return; }
       btn.disabled = true;
       try {
-        await fetch("https://ale-gonzalezcub1409.app.n8n.cloud/webhook/formulario.gamamobility.eu", {
+        await fetch("https://n8n.gamamobility.eu/webhook/formulario.gamamobility.eu", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ nombre: name, email, servicio: service, mensaje: message })
