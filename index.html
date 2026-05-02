@@ -406,8 +406,36 @@ nav.scrolled { background: rgba(8,8,8,0.97); }
   line-height: 1.7;
 }
 
+/* ── CARRUSEL ── */
+
+
+.carousel { position: relative; width: 100%; height: 100%; }
+.carousel-btn {
+position: absolute; top: 50%; transform: translateY(-50%);
+background: rgba(8,8,8,0.7); border: 1px solid var(–border2);
+color: var(–white); font-size: 20px; line-height: 1;
+width: 32px; height: 32px; border-radius: 2px;
+cursor: pointer; z-index: 2;
+display: flex; align-items: center; justify-content: center;
+transition: background 0.2s;
+}
+.carousel-btn:hover { background: rgba(201,168,76,0.3); }
+.carousel-prev { left: 8px; }
+.carousel-next { right: 8px; }
+.carousel-dots {
+position: absolute; bottom: 8px; left: 0; right: 0;
+display: flex; justify-content: center; gap: 6px; z-index: 2;
+}
+.carousel-dot {
+width: 6px; height: 6px; border-radius: 50%;
+background: rgba(255,255,255,0.3); cursor: pointer;
+transition: background 0.2s;
+}
+.carousel-dot.active { background: var(–gold); }
+
 /* ── CATÁLOGO ── */
-#catalogo { background: var(--black); }
+#catalogo { background: var(–black); }
+
 
 .catalog-header {
   display: flex; justify-content: space-between;
@@ -1489,12 +1517,36 @@ footer {
       var pais = car.pais || '';
       var precioEs = car.precio_es ? fmtPrice(car.precio_es) + ' \u20ac' : '';
       var ahorro = car.ahorro ? fmtPrice(car.ahorro) + '\u20ac' : '';
-      var fotoUrl = car.foto_url || '';
       var nombre = marca + ' ' + modelo;
+      var cardId = 'car-' + Math.random().toString(36).substr(2, 6);
 
-      var imageHtml = fotoUrl
-        ? '<img src="' + fotoUrl + '" alt="' + nombre + '" style="width:100%;height:100%;object-fit:cover;" />'
-        : '<div class="car-card-image-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>';
+      // Collect all photos
+      var fotos = [];
+      if (car.foto_url) fotos.push(car.foto_url);
+      if (car.foto_url_2) fotos.push(car.foto_url_2);
+      if (car.foto_url_3) fotos.push(car.foto_url_3);
+
+      var imageHtml = '';
+      if (fotos.length === 0) {
+        imageHtml = '<div class="car-card-image-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>';
+      } else if (fotos.length === 1) {
+        imageHtml = '<img src="' + fotos[0] + '" alt="' + nombre + '" style="width:100%;height:100%;object-fit:cover;" />';
+      } else {
+        var slides = '';
+        for (var i = 0; i < fotos.length; i++) {
+          slides += '<img src="' + fotos[i] + '" alt="' + nombre + ' foto ' + (i+1) + '" class="carousel-slide" style="width:100%;height:100%;object-fit:cover;display:' + (i === 0 ? 'block' : 'none') + ';" />';
+        }
+        var dots = '';
+        for (var j = 0; j < fotos.length; j++) {
+          dots += '<span class="carousel-dot' + (j === 0 ? ' active' : '') + '" onclick="event.stopPropagation();carouselGo(\'' + cardId + '\',' + j + ')"></span>';
+        }
+        imageHtml = '<div class="carousel" id="' + cardId + '" data-current="0">'
+          + slides
+          + '<button class="carousel-btn carousel-prev" onclick="event.stopPropagation();carouselPrev(\'' + cardId + '\')">&#8249;</button>'
+          + '<button class="carousel-btn carousel-next" onclick="event.stopPropagation();carouselNext(\'' + cardId + '\')">&#8250;</button>'
+          + '<div class="carousel-dots">' + dots + '</div>'
+          + '</div>';
+      }
 
       var ahorroHtml = ahorro ? '<div class="car-savings">Ahorro: ' + ahorro + '</div>' : '';
       var anioHtml = anio ? '<div class="car-spec">' + anio + '</div>' : '';
@@ -1512,6 +1564,32 @@ footer {
         + '<div class="car-price-total">' + precioEs + '</div>'
         + '</div><button class="btn-interest">Me interesa \u2192</button></div>'
         + '</div></div>';
+    }
+
+    function carouselGo(id, index) {
+      var c = document.getElementById(id);
+      if (!c) return;
+      var slides = c.querySelectorAll('.carousel-slide');
+      var dots = c.querySelectorAll('.carousel-dot');
+      slides.forEach(function(s) { s.style.display = 'none'; });
+      dots.forEach(function(d) { d.classList.remove('active'); });
+      slides[index].style.display = 'block';
+      dots[index].classList.add('active');
+      c.dataset.current = index;
+    }
+    function carouselNext(id) {
+      var c = document.getElementById(id);
+      if (!c) return;
+      var slides = c.querySelectorAll('.carousel-slide');
+      var current = parseInt(c.dataset.current) || 0;
+      carouselGo(id, (current + 1) % slides.length);
+    }
+    function carouselPrev(id) {
+      var c = document.getElementById(id);
+      if (!c) return;
+      var slides = c.querySelectorAll('.carousel-slide');
+      var current = parseInt(c.dataset.current) || 0;
+      carouselGo(id, (current - 1 + slides.length) % slides.length);
     }
 
     async function loadCatalog() {
