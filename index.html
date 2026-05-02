@@ -10,8 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } 
-      
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 
 :root {
@@ -1139,136 +1138,18 @@ footer {
         </div>
         <p style="font-size:13px;color:var(--white-30);max-width:280px;line-height:1.6;font-weight:300;">Cada vehículo supera nuestro check económico automático con margen neto mínimo de 1.500€</p>
       </div>
-      <div class="catalog-grid reveal">
-
-
-    <!-- Car 1 -->
-    <div class="car-card" onclick="openModal('BMW Serie 3 320d', '28.400€', '34.900€', '4.800€')">
-      <div class="car-card-image">
-        <div class="car-card-image-placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1">
-            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/>
-            <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
-          </svg>
+      <div class="catalog-grid reveal" id="catalog-grid">
+        <div style="grid-column:1/-1;padding:48px;text-align:center;color:var(--white-30);font-size:13px;font-weight:300;">
+          Cargando catálogo...
         </div>
-        <div class="car-badge">Disponible</div>
-        <div class="car-savings">Ahorro: 4.800€</div>
       </div>
-      <div class="car-card-body">
-        <div class="car-make">BMW</div>
-        <div class="car-model">Serie 3 320d</div>
-        <div class="car-specs">
-          <div class="car-spec">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            2021
-          </div>
-          <div class="car-spec">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-            68.000 km
-          </div>
-          <div class="car-spec">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>
-            Alemania
-          </div>
-        </div>
-        <div class="car-price-row">
-          <div>
-            <div class="car-price-eu">Precio llave en mano</div>
-            <div class="car-price-total">33.600 <span>€</span></div>
-          </div>
-          <button class="btn-interest">Me interesa →</button>
-        </div>
+      <div style="text-align:center;margin-top:32px;" class="reveal">
+        <p style="font-size:12px;color:var(--white-30);font-weight:300;letter-spacing:0.05em;">
+          ¿Quieres ver todas las oportunidades con ficha completa y precio desglosado?
+          <a href="#planes" style="color:var(--gold);text-decoration:none;margin-left:6px;">Activa las alertas premium →</a>
+        </p>
       </div>
     </div>
-
-    <!-- Car 2 -->
-    <div class="car-card" onclick="openModal('Audi A4 TDI', '24.900€', '31.200€', '4.200€')">
-      <div class="car-card-image">
-        <div class="car-card-image-placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1">
-            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/>
-            <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
-          </svg>
-        </div>
-        <div class="car-badge new">Nuevo hoy</div>
-        <div class="car-savings">Ahorro: 4.200€</div>
-      </div>
-      <div class="car-card-body">
-        <div class="car-make">Audi</div>
-        <div class="car-model">A4 40 TDI S-Line</div>
-        <div class="car-specs">
-          <div class="car-spec">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            2022
-          </div>
-          <div class="car-spec">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-            52.000 km
-          </div>
-          <div class="car-spec">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>
-            Países Bajos
-          </div>
-        </div>
-        <div class="car-price-row">
-          <div>
-            <div class="car-price-eu">Precio llave en mano</div>
-            <div class="car-price-total">29.400 <span>€</span></div>
-          </div>
-          <button class="btn-interest">Me interesa →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Car 3 -->
-    <div class="car-card" onclick="openModal('Volkswagen Passat GTE', '21.500€', '27.800€', '3.900€')">
-      <div class="car-card-image">
-        <div class="car-card-image-placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1">
-            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/>
-            <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
-          </svg>
-        </div>
-        <div class="car-badge">Disponible</div>
-        <div class="car-savings">Ahorro: 3.900€</div>
-      </div>
-      <div class="car-card-body">
-        <div class="car-make">Volkswagen</div>
-        <div class="car-model">Passat GTE Hybrid</div>
-        <div class="car-specs">
-          <div class="car-spec">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            2021
-          </div>
-          <div class="car-spec">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-            71.000 km
-          </div>
-          <div class="car-spec">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>
-            Bélgica
-          </div>
-        </div>
-        <div class="car-price-row">
-          <div>
-            <div class="car-price-eu">Precio llave en mano</div>
-            <div class="car-price-total">25.800 <span>€</span></div>
-          </div>
-          <button class="btn-interest">Me interesa →</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  <div style="text-align:center;margin-top:32px;" class="reveal">
-    <p style="font-size:12px;color:var(--white-30);font-weight:300;letter-spacing:0.05em;">
-      ¿Quieres ver todas las oportunidades con ficha completa y precio desglosado?
-      <a href="#planes" style="color:var(--gold);text-decoration:none;margin-left:6px;">Activa las alertas premium →</a>
-    </p>
-  </div>
-</div>
-
-
   </div>
 
   <div class="divider"></div>
@@ -1591,7 +1472,84 @@ footer {
   </div>
 
   <script>
-    // Nav scroll
+    // Catálogo dinámico desde Google Sheets via n8n
+    const CATALOG_URL = 'https://n8n.gamamobility.eu/webhook/d365d1c2-3ceb-4351-865f-f07506cb6cb8';
+
+    function fmtPrice(val) {
+      if (!val) return '0';
+      const n = parseInt(String(val).replace(/[^0-9]/g, ''));
+      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
+    function buildCarCard(car) {
+      const marca = car.marca || '';
+      const modelo = car.modelo || '';
+      const anio = car.ano || car['año'] || '';
+      const km = car.km ? fmtPrice(car.km) + ' km' : '';
+      const pais = car.pais || '';
+      const precioEs = car.precio_es ? fmtPrice(car.precio_es) + ' €' : '';
+      const ahorro = car.ahorro ? fmtPrice(car.ahorro) + '€' : '';
+      const fotoUrl = car.foto_url || '';
+      const nombre = marca + ' ' + modelo;
+
+      const imageHtml = fotoUrl
+        ? <img src="${fotoUrl}" alt="${nombre}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='<div class=car-card-image-placeholder><svg width=48 height=48 viewBox=\\"0 0 24 24\\" fill=none stroke=\\"rgba(201,168,76,0.2)\\" stroke-width=1><rect x=1 y=3 width=15 height=13 rx=2/><path d=\\"M16 8h4l3 3v5h-7V8z\\"/><circle cx=5.5 cy=18.5 r=2.5/><circle cx=18.5 cy=18.5 r=2.5/></svg></div>'" />
+        : `<div class="car-card-image-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1">
+              <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>`;
+
+      return `
+        <div class="car-card" onclick="openModal('${nombre}', '${car.precio_eu || ''}€', '${precioEs}', '${ahorro}')">
+          <div class="car-card-image">
+            ${imageHtml}
+            <div class="car-badge">Disponible</div>
+            ${ahorro ? <div class="car-savings">Ahorro: ${ahorro}</div> : ''}
+          </div>
+          <div class="car-card-body">
+            <div class="car-make">${marca}</div>
+            <div class="car-model">${modelo}</div>
+            <div class="car-specs">
+              ${anio ? <div class="car-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${anio}</div> : ''}
+              ${km ? <div class="car-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>${km}</div> : ''}
+              ${pais ? <div class="car-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>${pais}</div> : ''}
+            </div>
+            <div class="car-price-row">
+              <div>
+                <div class="car-price-eu">Precio llave en mano</div>
+                <div class="car-price-total">${precioEs}</div>
+              </div>
+              <button class="btn-interest">Me interesa →</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    async function loadCatalog() {
+      const grid = document.getElementById('catalog-grid');
+      try {
+        const res = await fetch(CATALOG_URL);
+        const data = await res.json();
+        const cars = Array.isArray(data) ? data : [data];
+        const available = cars.filter(c => {
+          const d = c.disponible || c.json?.disponible || '';
+          return String(d).toUpperCase() !== 'NO';
+        }).map(c => c.json || c);
+
+        if (available.length === 0) {
+          grid.innerHTML = '<div style="grid-column:1/-1;padding:48px;text-align:center;color:var(--white-30);font-size:13px;font-weight:300;">No hay vehículos disponibles en este momento. Vuelve pronto.</div>';
+          return;
+        }
+        grid.innerHTML = available.map(buildCarCard).join('');
+      } catch(e) {
+        grid.innerHTML = '<div style="grid-column:1/-1;padding:48px;text-align:center;color:var(--white-30);font-size:13px;font-weight:300;">No se pudo cargar el catálogo. Inténtalo de nuevo.</div>';
+      }
+    }
+    loadCatalog();
+
+
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 20);
