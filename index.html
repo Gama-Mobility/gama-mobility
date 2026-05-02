@@ -1512,9 +1512,9 @@ footer {
             <div class="car-make">${marca}</div>
             <div class="car-model">${modelo}</div>
             <div class="car-specs">
-              ${anio ? <div class="car-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${anio}</div> : ''}
-              ${km ? <div class="car-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>${km}</div> : ''}
-              ${pais ? <div class="car-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/></svg>${pais}</div> : ''}
+              ${anio ? '<div class="car-spec">' + anio + '</div>' : ''}
+              ${km ? '<div class="car-spec">' + km + '</div>' : ''}
+              ${pais ? '<div class="car-spec">' + pais + '</div>' : ''}
             </div>
             <div class="car-price-row">
               <div>
