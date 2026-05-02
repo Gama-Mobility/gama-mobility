@@ -1510,21 +1510,24 @@ footer {
     }
 
     function buildCarCard(car) {
-      var marca = car.marca || '';
-      var modelo = car.modelo || '';
-      var anio = car.ano || car['año'] || '';
-      var km = car.km ? fmtPrice(car.km) + ' km' : '';
-      var pais = car.pais || '';
-      var precioEs = car.precio_es ? fmtPrice(car.precio_es) + ' \u20ac' : '';
-      var ahorro = car.ahorro ? fmtPrice(car.ahorro) + '\u20ac' : '';
+      var marca = car.Marca || car.marca || '';
+      var modelo = car.Modelo || car.modelo || '';
+      var anio = car['año'] || car.ano || '';
+      var kmVal = car.KM || car.km || '';
+      var km = kmVal ? fmtPrice(kmVal) + ' km' : '';
+      var pais = car.Pais || car.pais || '';
+      var precioEs = (car.precio_es) ? fmtPrice(car.precio_es) + ' \u20ac' : '';
+      var ahorro = (car.ahorro) ? fmtPrice(car.ahorro) + '\u20ac' : '';
       var nombre = marca + ' ' + modelo;
       var cardId = 'car-' + Math.random().toString(36).substr(2, 6);
 
-      // Collect all photos
+      // Collect all photos — handle spaces in column names
       var fotos = [];
       if (car.foto_url) fotos.push(car.foto_url);
-      if (car.foto_url_2) fotos.push(car.foto_url_2);
-      if (car.foto_url_3) fotos.push(car.foto_url_3);
+      if (car['foto_url 2']) fotos.push(car['foto_url 2']);
+      if (car['foto_url 3']) fotos.push(car['foto_url 3']);
+      if (car.foto_url_2 && fotos.length < 3) fotos.push(car.foto_url_2);
+      if (car.foto_url_3 && fotos.length < 3) fotos.push(car.foto_url_3);
 
       var imageHtml = '';
       if (fotos.length === 0) {
