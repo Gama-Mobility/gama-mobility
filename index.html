@@ -87,7 +87,8 @@ nav.scrolled { background: rgba(238,242,247,0.98); }
   opacity: 0.95;
   transition: width 0.3s ease;  /* Transición suave al cambiar de tamaño */
 }
-
+    
+@media (max-width: 768px) {   nav {     padding: 0 24px;            /* Reducimos el padding lateral en móviles */  }   .nav-logo img {     width: 11em;                /* El logo se encoge proporcionalmente en móviles */  } }
 .nav-links {
   display: flex; align-items: center; gap: 40px;
   list-style: none;
