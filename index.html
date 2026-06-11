@@ -76,10 +76,16 @@ nav.scrolled { background: rgba(238,242,247,0.98); }
   display: flex; align-items: center;
   text-decoration: none; gap: 0;
 }
+    
 .nav-logo img {
-  height: 58px; width: auto;
+  width: 15em;                  /* Ancho por defecto en escritorio */
+  max-width: 100%;              /* Evita que se desborde */
+  height: auto;                 /* Mantiene la proporción de la imagen */
+  max-height: calc(var(--nav-h) * 0.7); /* Asegura que se alinee verticalmente sin rebasar el nav */
+  object-fit: contain;          /* Evita distorsiones */
   mix-blend-mode: multiply;
   opacity: 0.95;
+  transition: width 0.3s ease;  /* Transición suave al cambiar de tamaño */
 }
 
 .nav-links {
